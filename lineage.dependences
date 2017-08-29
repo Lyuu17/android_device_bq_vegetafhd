@@ -1,0 +1,26 @@
+[
+  {
+    "remote": "Ankris"
+    "repository": "android_kernel_bq_vegetafhd",
+    "target_path": "kernel/bq/vegetafhd",
+    "branch": "cm-13.0"
+  },
+  {
+    "remote": "Ankris"
+    "repository": "android_vendor_bq_vegetafhd",
+    "target_path": "vendor/bq/vegetafhd",
+    "branch": "cm-13.0"
+  },
+  {
+    "remote": "LineageOS"
+    "repository": "android_external_stlport",
+    "target_path": "external/stlport",
+    "branch": "cm-13.0"
+  },
+  {
+    "remote": "LineageOS"
+    "repository": "android_external_stlport",
+    "target_path": "external/stlport",
+    "branch": "cm-13.0"
+  }
+]
