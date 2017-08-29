@@ -148,7 +148,7 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    libril
+    libmt6592
     
 # EGL
 PRODUCT_PACKAGES += \
