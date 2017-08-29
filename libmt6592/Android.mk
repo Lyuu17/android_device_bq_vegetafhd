@@ -19,7 +19,7 @@ LOCAL_SRC_FILES := \
     ril.cpp
 
 LOCAL_SHARED_LIBRARIES := libbinder
-LOCAL_MODULE := libril
+LOCAL_MODULE := libmt6592
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
