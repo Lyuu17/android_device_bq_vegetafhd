@@ -91,15 +91,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Ramdisk
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/ramdisk/default.prop:root/default.prop \
-    $(LOCAL_PATH)/rootdir/ramdisk/enableswap.sh:root/enableswap.sh \
-    $(LOCAL_PATH)/rootdir/ramdisk/factory_init.rc:root/factory_init.rc \
-    $(LOCAL_PATH)/rootdir/ramdisk/fstab:root/fstab \
-    $(LOCAL_PATH)/rootdir/ramdisk/init.modem.rc:root/init.modem.rc \
-    $(LOCAL_PATH)/rootdir/ramdisk/init.protect.rc:root/init.protect.rc \
-    $(LOCAL_PATH)/rootdir/ramdisk/init.usb.rc:root/init.usb.rc \
-    $(LOCAL_PATH)/rootdir/ramdisk/ueventd.rc:root/ueventd.rc
+PRODUCT_PACKAGES += \
+    enableswap.sh \
+    factory_init.rc \
+    fstab.mt6592 \
+    init.modem.rc \
+    init.mt6592.rc \
+    init.mt6592.usb.rc \
+    init.recovery.mt6592.rc \
+    ueventd.mt6592.rc
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS := device/bq/vegetafhd/overlay
