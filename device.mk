@@ -19,7 +19,7 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 LOCAL_PATH := device/bq/vegetafhd
 
-# PERMISSIONS
+# Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
@@ -45,7 +45,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
 
-# CAMERA PERMISSIONS
+# Camera permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
 	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
@@ -55,11 +55,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/rootdir/system/etc/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
 
-# GPS CONFIGURATION
+# GPS configuration
 PRODUCT_COPY_FILES +=\
   $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf 
 
-# AUDIO	
+# Audio	
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/rootdir/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
@@ -69,17 +69,17 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml
 
-# THERMAL
+# Thermal
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/rootdir/system/etc/thermal/thermal.conf:system/etc/.tp/thermal.conf \
      $(LOCAL_PATH)/rootdir/system/etc/thermal/.ht120.mtc:system/etc/.tp/.ht120.mtc \
      $(LOCAL_PATH)/rootdir/system/etc/thermal/thermal.off.conf:system/etc/.tp/thermal.off.conf
 
-# KEYLAYOUT
+# Keylayout
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/usr/keylayout/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl
 
-# HOSTAPD
+# Hostapd
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/rootdir/system/etc/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
@@ -87,7 +87,7 @@ PRODUCT_COPY_FILES += \
 	
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# RAMDISK
+# Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/ramdisk/default.prop:root/default.prop \
     $(LOCAL_PATH)/rootdir/ramdisk/enableswap.sh:root/enableswap.sh \
@@ -98,10 +98,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/ramdisk/init.usb.rc:root/init.usb.rc \
     $(LOCAL_PATH)/rootdir/ramdisk/ueventd.rc:root/ueventd.rc
 
-# OVERLAY
+# Overlay
 DEVICE_PACKAGE_OVERLAYS := device/bq/vegetafhd/overlay
 
-# AUDIO
+# Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
@@ -111,11 +111,11 @@ PRODUCT_PACKAGES += \
 
 USE_CUSTOM_AUDIO_POLICY := 1
 
-# LED NOTIFICATION 
+# LED Notifications 
 PRODUCT_PACKAGES += \
     liblights
 
-# WIFI
+# WiFi
  PRODUCT_PACKAGES += \
     libwpa_client \
     hostapd \
@@ -127,14 +127,14 @@ PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory
 
-# CHARGING
+# Charging
 PRODUCT_PACKAGES += \
     charger \
     charger_res_images \
     libnl_2 \
     libtinyxml
 
-# PARTITIONS
+# Partitions
 PRODUCT_PACKAGES += \
     setup_fs \
     e2fsck
@@ -142,7 +142,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libxlog
     
-# GPS PACKAGE
+# GPS
 PRODUCT_PACKAGES += \
     YGPS
 
@@ -154,11 +154,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libstlport
    
-# CAMERA PACKAGE
+# Camera
 PRODUCT_PACKAGES += \
     Snap
     
-# RADIO PACKAGE
+# Radio
 PRODUCT_PACKAGES += \
     FMRadio
     
@@ -183,7 +183,3 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES := \
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-filter=speed \
     dalvik.vm.dex2oat-swap=false	
-	
-# LOGD TOOL
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/tools/logd:system/bin/logd
