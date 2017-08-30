@@ -44,6 +44,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_
 
 # Kernel
 TARGET_PREBUILT_KERNEL := device/bq/vegetafhd/kernel
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 
 # OTA
 TARGET_OTA_ASSERT_DEVICE := vegetafhd,Aquaris_E5FHD,E5FHD
