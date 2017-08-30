@@ -103,3 +103,5 @@ USE_CAMERA_STUB := true
 # SEPolicy
 BOARD_SEPOLICY_DIRS += \
     device/bq/vegetafhd/sepolicy
+
+$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)

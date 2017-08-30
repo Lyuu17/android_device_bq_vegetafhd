@@ -17,6 +17,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
+# call the proprietary setup
+$(call inherit-product, vendor/bq/vegetafhd/vegetafhd-vendor.mk)
+
 LOCAL_PATH := device/bq/vegetafhd
 
 # Permissions
@@ -162,9 +165,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     FMRadio
     
-# call the proprietary setup
-$(call inherit-product, vendor/bq/vegetafhd/vegetafhd-vendor.mk)
-
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES := \
 	ro.crypto.state=unencrypted \
 	ro.mount.fs=EXT4 \
