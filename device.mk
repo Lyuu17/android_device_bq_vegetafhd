@@ -112,7 +112,7 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     tinymix
 
-USE_CUSTOM_AUDIO_POLICY := 1
+USE_CUSTOM_AUDIO_POLICY := 0
 
 # LED Notifications 
 PRODUCT_PACKAGES += \
