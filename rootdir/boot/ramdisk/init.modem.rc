@@ -1,29 +1,27 @@
-# Copyright (C) 2012 The Android Open Source Project
-#
-# IMPORTANT: Do not create world writable files or directories.
-# This is a common source of Android security bugs.
-#
-   
 on post-fs-data
-
-    write /proc/bootprof "post-fs-data: on modem start"
-
     # Modem related device nodes
-    mkdir /data/nvram/md  0770 root system
-
-#  Build-in Modified - S
-#    insmod /system/lib/modules/ccci_plat.ko
-#    insmod /system/lib/modules/ccci.ko
-#  Build-in Modified - E
-#   chown ccci ccci /sys/class/BOOT/BOOT/boot/md
+    mkdir /data/nvram/md 0770 root system
+    mkdir /data/nvram/md2 0770 root system
     chown radio radio /sys/kernel/ccci/boot
+    # xplod: this is not in the original mtk file... But I have no
+    # idea what kind of sorcery normally sets them
+    # ElTifo: I've added more lines to match the current files present on my FHD stock ROM
+    chown radio radio /dev/ccci_fs
+    chown radio radio /dev/ccci_ioctl0
+    chown radio radio /dev/ccci_ioctl1
+    chown radio radio /dev/ccci_ioctl2
+    chown radio radio /dev/ccci_ioctl3
+    chown radio radio /dev/ccci_ioctl4
+    chown radio radio /dev/ccci_ipc_2
+    chown radio radio /dev/ccci_ipc_1220_0
+    chown radio radio /dev/ccci_md_log_rx
+    chown radio radio /dev/ccci_md_log_tx
+    chown radio radio /dev/ccci_monitor
+    chown radio radio /dev/ccci_pcm_rx
+    chown radio radio /dev/ccci_pcm_tx
+    chown radio radio /dev/ccci_uem_rx
+    chown radio radio /dev/ccci_uem_tx
 
-#SeLinux
-    mkdir /data/ccci_cfg 0770 system radio
-    restorecon /data/ccci_cfg
-    restorecon_recursive /protect_f
-    restorecon_recursive /protect_s
-    
 service gsm0710muxd /system/bin/gsm0710muxd -s /dev/ttyC0 -f 512 -n 8 -m basic
     class core
     user root
@@ -43,7 +41,7 @@ service muxreport-daemon /system/bin/muxreport
     disabled
     oneshot
 
-service ril-daemon-mtk /system/bin/mtkrild
+service ril-daemon /system/bin/rild
     class core
     socket rild stream 660 root radio
     socket rild2 stream 660 root radio
@@ -59,9 +57,8 @@ service ril-daemon-mtk /system/bin/mtkrild
     user root
     group radio cache inet misc audio sdcard_r sdcard_rw log system
     disabled
-    oneshot
 
-service ril-daemon-mtkmd2 /system/bin/mtkrildmd2
+service ril-daemon-md2 /system/bin/rildmd2
     class core
     socket rild-md2 stream 660 root radio
     socket rild2-md2 stream 660 root radio
@@ -74,7 +71,6 @@ service ril-daemon-mtkmd2 /system/bin/mtkrildmd2
     user root
     group radio cache inet misc audio sdcard_r sdcard_rw log system
     disabled
-    oneshot
 
 service md_minilog_util /system/bin/md_minilog_util
     user radio
@@ -85,31 +81,32 @@ service md_minilog_util /system/bin/md_minilog_util
 #  Modem related services (Begin)
 #
 
-#service permission_check /system/bin/permission_check
-#    class main
-#    user root
-#    group nvram
-#    oneshot
-
 service permission_check /system/bin/permission_check
     class main
     user root
-    group system radio
+    group nvram
     oneshot
 
 service ccci_fsd /system/bin/ccci_fsd 0
-    user radio
+    user root
+    group radio system
+    class core
+    oneshot
+
+service ccci2_fsd /system/bin/ccci_fsd 1
+    user root
     group radio system
     class core
     oneshot
 
 service ccci_mdinit /system/bin/ccci_mdinit 0
-    user system
+    user root
     group radio system
     class core
+    oneshot
 
-service ccci_rpcd /system/bin/ccci_rpcd
-    user radio
+service ccci2_mdinit /system/bin/ccci_mdinit 1
+    user root
     group radio system
     class core
     oneshot
@@ -126,12 +123,6 @@ service pppd /system/bin/pppd file /data/misc/ppp/ppp_options
     disabled 
     oneshot
 
-on property:ril.muxreport=1
-    start muxreport-daemon
-
-#
-#   Telephony Early Read service
-#
 service terservice /system/bin/terservice
     class core
     user radio
@@ -142,4 +133,3 @@ service terservice /system/bin/terservice
 #
 #  Modem related services (End)
 #
-

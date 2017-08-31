@@ -92,8 +92,6 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    enableswap.sh \
-    factory_init.rc \
     fstab.mt6592 \
     init.modem.rc \
     init.mt6592.rc \
@@ -169,6 +167,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.telephony.sim.count=2 \
     ro.allow.mock.location=0 \
     ro.debuggable=1 \
+    ro.hardware=mt6592 \
     persist.sys.usb.config=mtp,adb \
     persist.service.adb.enable=1 \
     persist.service.debuggable=1 \

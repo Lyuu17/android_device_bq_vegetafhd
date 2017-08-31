@@ -3,21 +3,6 @@ ifeq ($(TARGET_BOOTLOADER_BOARD_NAME), mt6592)
 LOCAL_PATH := $(call my-dir)
 
 # Init scripts
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := enableswap.sh
-LOCAL_MODULE_TAGS  := eng
-LOCAL_SRC_FILES    := boot/ramdisk/enableswap.sh
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := factory_init.rc
-LOCAL_MODULE_TAGS  := eng
-LOCAL_SRC_FILES    := boot/ramdisk/factory_init.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
 include $(CLEAR_VARS)
 LOCAL_MODULE       := fstab.mt6592
 LOCAL_MODULE_TAGS  := eng
