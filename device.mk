@@ -91,13 +91,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Ramdisk
-PRODUCT_PACKAGES += \
-    fstab.mt6592 \
-    init.modem.rc \
-    init.mt6592.rc \
-    init.mt6592.usb.rc \
-    init.recovery.mt6592.rc \
-    ueventd.mt6592.rc
+PRODUCT_COPY_FILES += \
+	$(call find-copy-subdir-files,*,${LOCAL_PATH}/rootdir/boot/ramdisk,root)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS := device/bq/vegetafhd/overlay
